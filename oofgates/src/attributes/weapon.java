@@ -5,9 +5,7 @@ import main.Main;
 
 public class weapon { 
 	
-	@SuppressWarnings("static-access")
-	public static void weaponr(int t,int d,int s,int w,String a) {
-		if(Main.stage=="f") {
+	public void weaponr(int t,int d,int s,int w,String a) {
 			Luck l = new Luck();
 			l.luckr();
 			Main.weapon_dur = t;
@@ -15,7 +13,5 @@ public class weapon {
 			Main.speed += s;
 			Main.weapon_dur = w;
 			Main.inventory[0] = a;
-			Main.stage="s";
 		}
 	}
-}
