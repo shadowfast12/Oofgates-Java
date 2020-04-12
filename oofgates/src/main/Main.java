@@ -32,15 +32,16 @@ public class Main {
 	public static String[] inventory = {"a","cloth armor", "bread", "d", "e"},events;
 	
 	public static JButton option_button,option_button2,option_button3,option_button4;
-	
+	public static JList<String> list,list_1;
+	public static JLabel event_label;
 	
 	public static List<String>all_events = new ArrayList<String>();
 	
 	//Enemy Stats
 	public static int b_damage,b_health,b_coins,b_speed,b_exp,stage;
+	public static JFrame f;
 	
 	private JButton btnNewButton;
-	public static JList<String> list,list_1;
 	private JScrollPane scrollPane;
 	
 	
@@ -60,23 +61,23 @@ public class Main {
 	 */
 	@SuppressWarnings({ "unused" })
 	public void gui() {
-		
-		JFrame f;
 		f = new JFrame();
+		f.setResizable(false);
 		f.getContentPane().setBackground(Color.LIGHT_GRAY);
 		f.setTitle("OofGates");
 		f.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		f.getContentPane().setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(700,500);
+		f.setSize(450,500);
 		f.setVisible(true);
 		
 		//SEPERATE CLASSES
 		Luck l = new Luck();
-		weapon w = new weapon();
 		Set_buttons sb = new Set_buttons();
 		Liste lste = new Liste();
+		Lister lr = new Lister();
 		
+				
 		JLabel title_label = new JLabel("OofGates");
 		title_label.setFont(new Font("Times New Roman", Font.PLAIN, 40));
 		title_label.setBounds(10, 11, 195, 32);
@@ -90,25 +91,12 @@ public class Main {
 		option_button = new JButton("Rock");
 		option_button.setForeground(SystemColor.windowBorder);
 		option_button.setBackground(SystemColor.activeCaptionBorder);
-		option_button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				w.weaponr(15,5,-1,15,"Rock");
-				stage=1;
-			}
-		});
 		option_button.setBounds(10, 153, 150, 50);
 		f.getContentPane().add(option_button);
 		
 		option_button2 = new JButton("Rusty Sword");
 		option_button2.setForeground(SystemColor.windowBorder);
 		option_button2.setBackground(SystemColor.activeCaptionBorder);
-		option_button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				w.weaponr(25,12,-5,25,"Rusty Sword");
-				stage=1;
-				
-			}
-		});
 		option_button2.setBounds(10, 216, 150, 50);
 		f.getContentPane().add(option_button2);
 		
@@ -116,11 +104,6 @@ public class Main {
 		option_button3 = new JButton("Dagger");
 		option_button3.setForeground(SystemColor.windowBorder);
 		option_button3.setBackground(SystemColor.activeCaptionBorder);
-		option_button3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				w.weaponr(30,8,0,30,"Dagger");
-			}
-		});
 		option_button3.setBounds(10, 279, 150, 50);
 		f.getContentPane().add(option_button3);
 		
@@ -132,21 +115,28 @@ public class Main {
 		f.getContentPane().add(option_button4);
 		
 		btnNewButton = new JButton("Events");
+		btnNewButton.setBackground(SystemColor.activeCaptionBorder);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lste.list_gui();
 			}
 		});
 		btnNewButton.setForeground(SystemColor.windowBorder);
-		btnNewButton.setBounds(226, 390, 125, 50);
+		btnNewButton.setBounds(299, 400, 125, 50);
 		f.getContentPane().add(btnNewButton);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(705, 469, 8, 9);
 		f.getContentPane().add(scrollPane);
+		scrollPane.setVisible(false);
 		
 		list_1 = new JList<String>();
 		scrollPane.setViewportView(list_1);
+		
+		event_label = new JLabel("Event Here");
+		event_label.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		event_label.setBounds(10, 69, 424, 65);
+		f.getContentPane().add(event_label);
 		
 		
 		f.repaint();
@@ -162,7 +152,7 @@ public class Main {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				sb.Set_button();
+				sb.set_button();
 			}
 		}
 	}
@@ -170,9 +160,14 @@ public class Main {
 	rsh.start();
 	
 	
-	Lister lr = new Lister();
+	lr.listers("You Find a Rock, Sword, & dagger. Pick one.");
+	sb.actions();
 	
-	}
+	
+}
+	
+	
+	
 	
 	public static void main(String[] args) {
 		Main m = new Main();
