@@ -29,7 +29,7 @@ public class Main {
 	//Player's Stats
 	public static int health,damage,armor,level,speed,exp,luck,singl;
 	public static float weapon_dur;
-	public static String[] inventory = {"a","cloth armor", "bread", "d", "e"},events;
+	public static String[] inventory = {"a","Cloth Armor", "Bread", "Nothing", "Nothing"},events;
 	
 	public static JButton option_button,option_button2,option_button3,option_button4;
 	public static JList<String> list,list_1;

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import attack.Attack;
 import attributes.weapon;
 import main.Main;
 
@@ -20,7 +21,8 @@ public class Set_buttons {
 		class ron implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				if(Main.stage==1) {
-					at.Attacks();	
+					at.Attacks();
+					Main.f.setVisible(false);
 				}
 				if(Main.stage==0) {
 					w.weaponr(15,5,-1,15,"Rock");
