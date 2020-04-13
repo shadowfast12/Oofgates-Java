@@ -3,9 +3,8 @@ package functions;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-
 import attack.Attack;
+import attributes.Enemy;
 import attributes.weapon;
 import main.Main;
 
@@ -16,12 +15,15 @@ public class Set_buttons {
 	Lister lr = new Lister();
 	weapon w = new weapon();
 	Attack at = new Attack();
-	
+	Luck lk = new Luck();
+	Enemy en = new Enemy();
+
 	public void actions() {
 		class ron implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				if(Main.stage==1) {
 					at.Attacks();
+					en.Enemies("Black Man",5,50,4,2,0);
 					Main.f.setVisible(false);
 				}
 				if(Main.stage==0) {
@@ -37,7 +39,11 @@ public class Set_buttons {
 
 		class ron1 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
-				Main.option_button.removeActionListener(rn);
+					if(Main.stage==1) {
+						Main.coins = 0;
+						lr.listers("You have lost all your coins");
+						Main.stage=2;
+					}
 					if(Main.stage==0) {
 						w.weaponr(25,12,-5,25,"Rusty Sword");
 						Main.stage=1;

@@ -27,7 +27,7 @@ import javax.swing.JList;
 //**use arrays for the cards in the blackjack**
 public class Main {
 	//Player's Stats
-	public static int health,damage,armor,level,speed,exp,luck,singl;
+	public static int health,damage,armor,level,speed,exp,luck,singl,coins;
 	public static float weapon_dur;
 	public static String[] inventory = {"a","Cloth Armor", "Bread", "Nothing", "Nothing"},events;
 	
@@ -39,6 +39,8 @@ public class Main {
 	
 	//Enemy Stats
 	public static int b_damage,b_health,b_coins,b_speed,b_exp,stage;
+	public static String b_name;
+	
 	public static JFrame f;
 	
 	private JButton btnNewButton;

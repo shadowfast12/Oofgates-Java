@@ -13,12 +13,28 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import java.awt.SystemColor;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
 import javax.swing.JButton;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Attack {
 	
 	Luck l = new Luck();
+	Charge cg = new Charge();
+	
+	public static byte nexts;
+	public static JLabel event;
+	public static JPanel panel;
+	
+	
+	public Attack() {
+		nexts = 0;
+	}	
 	
 	/**
 	 * @wbp.parser.entryPoint
@@ -32,6 +48,38 @@ public class Attack {
 		aa.getContentPane().setLayout(null);
 		aa.setSize(550,375);
 		aa.setVisible(true);
+		
+		
+		aa.addMouseListener(new MouseListener() {
+
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				nexts = 1;
+				panel.setVisible(false);
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}
+		});
+		
 		
 		Box verticalBox = Box.createVerticalBox();
 		verticalBox.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -110,15 +158,22 @@ public class Attack {
 		JLabel label_4 = new JLabel("___________________");
 		verticalBox_1.add(label_4);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(SystemColor.controlHighlight);
 		panel.setBounds(160, 140, 218, 43);
 		aa.getContentPane().add(panel);
 		
-		JLabel event = new JLabel("Event here");
+		event = new JLabel("Event here");
 		panel.add(event);
 		
 		JButton Charge_button = new JButton("CHARGE!");
+		Charge_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(nexts==1) {
+					cg.charge();
+				}
+			}
+		});
 		Charge_button.setForeground(SystemColor.windowBorder);
 		Charge_button.setBackground(SystemColor.activeCaptionBorder);
 		Charge_button.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -153,6 +208,9 @@ public class Attack {
 					third_item.setText(Main.inventory[2]);
 					fourth_item.setText(Main.inventory[3]);
 					fifth_item.setText(Main.inventory[4]);
+					EHealth_label.setText("Health: "+Main.b_health);
+					EDamage_label.setText("Damage: "+Main.b_damage);
+					
 				}
 			}
 		}
