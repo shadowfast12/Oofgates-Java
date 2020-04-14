@@ -10,13 +10,15 @@ public class Charge {
 	Lister ls = new Lister();
 	
 	public void charge() {
+		Attack.eneme=2;
+		
 		lk.luckr();
 		if(Main.luck<=2) {
-			ls.listers("YOU HAVE MISSED",true);
+			ls.listers("You've Missed",true);
 		}
 		else {
 			Main.b_health-=Main.damage;
-			ls.listers("YOU HAVE DEALT "+Main.damage,true);
+			ls.listers("You've Dealt "+Main.damage+" Damage",true);
 		}
 	}
 }

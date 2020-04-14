@@ -23,6 +23,7 @@ import java.awt.SystemColor;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 //**use arrays for the cards in the blackjack**
 public class Main {
@@ -33,7 +34,6 @@ public class Main {
 	
 	public static JButton option_button,option_button2,option_button3,option_button4;
 	public static JList<String> list,list_1;
-	public static JLabel event_label;
 	
 	public static List<String>all_events = new ArrayList<String>();
 	
@@ -42,6 +42,7 @@ public class Main {
 	public static String b_name;
 	
 	public static JFrame f;
+	public static JTextArea event_label;
 	
 	private JButton btnNewButton;
 	private JScrollPane scrollPane;
@@ -135,9 +136,14 @@ public class Main {
 		list_1 = new JList<String>();
 		scrollPane.setViewportView(list_1);
 		
-		event_label = new JLabel("Event Here");
-		event_label.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		event_label.setBounds(10, 69, 424, 65);
+		event_label = new JTextArea();
+		event_label.setText("Event here");
+		event_label.setRows(3);
+		event_label.setLineWrap(true);
+		event_label.setEditable(false);
+		event_label.setBackground(Color.LIGHT_GRAY);
+		event_label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		event_label.setBounds(10, 63, 424, 79);
 		f.getContentPane().add(event_label);
 		
 		

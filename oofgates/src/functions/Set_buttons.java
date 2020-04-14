@@ -23,7 +23,7 @@ public class Set_buttons {
 			public void actionPerformed(ActionEvent e) {
 				if(Main.stage==1) {
 					at.Attacks();
-					en.Enemies("Black Man",5,50,4,2,0);
+					en.Enemies("Black Man",10,50,4,2,0);
 					Main.f.setVisible(false);
 				}
 				if(Main.stage==0) {

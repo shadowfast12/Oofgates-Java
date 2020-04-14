@@ -13,7 +13,7 @@ public class weapon {
 			l.luckr();
 			
 			Main.weapon_dur = t;
-			Main.damage += Main.luck + d;
+			Main.damage = d;
 			Main.speed += s;
 			Main.weapon_dur = w;
 			Main.inventory[0] = a;

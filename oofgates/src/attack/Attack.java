@@ -15,24 +15,25 @@ import javax.swing.JPanel;
 import java.awt.SystemColor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
 import javax.swing.JButton;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class Attack {
 	
 	Luck l = new Luck();
 	Charge cg = new Charge();
+	Block bk = new Block();
+	Robot_attack rbt = new Robot_attack();
 	
-	public static byte nexts;
-	public static JLabel event;
-	public static JPanel panel;
 	
+	public static byte nexts,eneme;
+	public static JTextArea event;
 	
 	public Attack() {
+		eneme = 0;
 		nexts = 0;
 	}	
 	
@@ -55,8 +56,15 @@ public class Attack {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				event.setVisible(false);
+				eneme+=5;
+				if(eneme==7) {
+					rbt.r_attack();
+				}
+				
+				
 				nexts = 1;
-				panel.setVisible(false);
+				
 			}
 
 			@Override
@@ -158,14 +166,6 @@ public class Attack {
 		JLabel label_4 = new JLabel("___________________");
 		verticalBox_1.add(label_4);
 		
-		panel = new JPanel();
-		panel.setBackground(SystemColor.controlHighlight);
-		panel.setBounds(160, 140, 218, 43);
-		aa.getContentPane().add(panel);
-		
-		event = new JLabel("Event here");
-		panel.add(event);
-		
 		JButton Charge_button = new JButton("CHARGE!");
 		Charge_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -181,6 +181,11 @@ public class Attack {
 		aa.getContentPane().add(Charge_button);
 		
 		JButton Block_button = new JButton("BLOCK");
+		Block_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bk.block();
+			}
+		});
 		Block_button.setForeground(SystemColor.windowBorder);
 		Block_button.setBackground(SystemColor.activeCaptionBorder);
 		Block_button.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -192,6 +197,15 @@ public class Attack {
 		btnNewButton.setBackground(SystemColor.activeCaptionBorder);
 		btnNewButton.setBounds(227, 317, 89, 23);
 		aa.getContentPane().add(btnNewButton);
+		
+		event = new JTextArea();
+		event.setLineWrap(true);
+		event.setText("Event Here");
+		event.setFont(new Font("Myanmar Text", Font.PLAIN, 13));
+		event.setBackground(SystemColor.controlHighlight);
+		event.setEditable(false);
+		event.setBounds(160, 126, 218, 78);
+		aa.getContentPane().add(event);
 		
 		class refresh extends Thread{
 			public void run() {

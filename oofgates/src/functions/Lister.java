@@ -19,6 +19,6 @@ public class Lister {
 		
 		Attack.event.setText(s);
 		Attack.nexts = 0;
-		Attack.panel.setVisible(true);
+		Attack.event.setVisible(true);
 	}
 }
