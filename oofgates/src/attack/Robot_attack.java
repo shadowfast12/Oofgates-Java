@@ -14,7 +14,7 @@ public class Robot_attack {
 		if(Main.luck>=4) {
 			lk.luckr();
 			Main.health-=Main.b_damage;
-			lr.listers(Main.b_name+" has Dealt "+Main.b_damage+Main.luck+" Damage", true);
+			lr.listers(Main.b_name+" has Dealt "+(Main.b_damage+Main.luck)+" Damage", true);
 		}
 		if(Main.luck<=3) {
 			lk.luckr();

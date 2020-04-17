@@ -43,7 +43,7 @@ public class Attack {
 	public void Attacks() {
 		JFrame aa = new JFrame();
 		aa.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		aa.setTitle("Die Schlägerei");
+		aa.setTitle("Die Schl\u00E4gerei");
 		aa.setResizable(false);
 		aa.getContentPane().setBackground(SystemColor.controlShadow);
 		aa.getContentPane().setLayout(null);
@@ -136,7 +136,7 @@ public class Attack {
 		fifth_item.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		verticalBox.add(fifth_item);
 		
-		JLabel title = new JLabel("Die Schlägerei");
+		JLabel title = new JLabel("Die Schl\u00E4gerei");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setVerticalAlignment(SwingConstants.TOP);
 		title.setFont(new Font("Modern No. 20", Font.PLAIN, 32));
@@ -204,7 +204,7 @@ public class Attack {
 		event.setFont(new Font("Myanmar Text", Font.PLAIN, 13));
 		event.setBackground(SystemColor.controlHighlight);
 		event.setEditable(false);
-		event.setBounds(160, 126, 218, 78);
+		event.setBounds(160, 126, 218, 43);
 		aa.getContentPane().add(event);
 		
 		class refresh extends Thread{
