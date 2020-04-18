@@ -27,7 +27,7 @@ public class Set_buttons {
 					Main.f.setVisible(false);
 				}
 				if(Main.stage==0) {
-					w.weaponr(15,5,-1,15,"Rock");
+					w.weaponr(15,5,-1,15,"Rock",true);
 					Main.stage=1;
 				}
 
@@ -45,7 +45,7 @@ public class Set_buttons {
 						Main.stage=2;
 					}
 					if(Main.stage==0) {
-						w.weaponr(25,12,-5,25,"Rusty Sword");
+						w.weaponr(25,12,-5,25,"Rusty Sword",null);
 						Main.stage=1;
 					}
 					aa=0;
@@ -55,7 +55,7 @@ public class Set_buttons {
 		class ron2 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 			if(Main.stage==0) {
-				w.weaponr(30,8,0,30,"Dagger");
+				w.weaponr(30,8,0,30,"Dagger",null);
 				Main.stage=1;
 				}
 			aa=0;
