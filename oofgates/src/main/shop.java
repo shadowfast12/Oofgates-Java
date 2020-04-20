@@ -39,6 +39,8 @@ public class shop {
 		s.getContentPane().setLayout(null);
 		s.setSize(450, 325);
 		s.setVisible(true);
+		s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		
 		JLabel title_lb = new JLabel("Le Shop");
 		title_lb.setFont(new Font("Tahoma", Font.PLAIN, 32));

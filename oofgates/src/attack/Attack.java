@@ -50,6 +50,7 @@ public class Attack {
 		aa.setResizable(false);
 		aa.getContentPane().setBackground(SystemColor.controlShadow);
 		aa.getContentPane().setLayout(null);
+		aa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		aa.setSize(550,375);
 		aa.setVisible(true);
 		
