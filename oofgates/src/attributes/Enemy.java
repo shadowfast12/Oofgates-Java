@@ -1,5 +1,6 @@
 package attributes;
 
+import attack.Attack;
 import functions.Luck;
 import main.Main;
 

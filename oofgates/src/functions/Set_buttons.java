@@ -7,6 +7,7 @@ import attack.Attack;
 import attributes.Enemy;
 import attributes.weapon;
 import main.Main;
+import main.shop;
 
 
 public class Set_buttons {
@@ -17,17 +18,23 @@ public class Set_buttons {
 	Attack at = new Attack();
 	Luck lk = new Luck();
 	Enemy en = new Enemy();
+	shop s = new shop();
 
 	public void actions() {
 		class ron implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
+				//shop
+				if(Main.stage==2) {
+					s.shope();
+				}
+				//attack
 				if(Main.stage==1) {
 					at.Attacks();
 					en.Enemies("Black Man",10,50,4,2,0);
 					Main.f.setVisible(false);
 				}
 				if(Main.stage==0) {
-					w.weaponr(15,5,-1,15,"Rock",true);
+					w.weaponr(5,-1,15,"Rock",true);
 					Main.stage=1;
 				}
 
@@ -45,7 +52,7 @@ public class Set_buttons {
 						Main.stage=2;
 					}
 					if(Main.stage==0) {
-						w.weaponr(25,12,-5,25,"Rusty Sword",null);
+						w.weaponr(12,-5,25,"Rusty Sword",false);
 						Main.stage=1;
 					}
 					aa=0;
@@ -55,7 +62,7 @@ public class Set_buttons {
 		class ron2 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 			if(Main.stage==0) {
-				w.weaponr(30,8,0,30,"Dagger",null);
+				w.weaponr(8,0,30,"Dagger",false);
 				Main.stage=1;
 				}
 			aa=0;
@@ -80,6 +87,12 @@ public class Set_buttons {
 				Main.option_button3.setVisible(false);
 				
 			
+			}
+			if(Main.stage==2) {
+				Main.option_button.setText("Shop");
+				Main.option_button2.setText("Forest");
+				Main.option_button3.setText("Casino");
+				Main.option_button4.setText("Arena");
 			}
 			aa++;
 		}

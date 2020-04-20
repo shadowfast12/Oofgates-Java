@@ -14,7 +14,6 @@ public class Lister {
 	//for the attack event label only
 	public void listers(String s,boolean b) {
 		Main.all_events.add(s);
-		Main.event_label.setText(s);
 		Main.list_1.setListData(Main.all_events.toArray(new String[0]));
 		
 		Attack.event.setText(s);

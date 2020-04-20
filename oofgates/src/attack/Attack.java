@@ -6,7 +6,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 
+import attributes.Enemy;
 import functions.Luck;
+import functions.Set_buttons;
 import main.Main;
 
 import java.awt.Color;
@@ -27,10 +29,11 @@ public class Attack {
 	Charge cg = new Charge();
 	Block bk = new Block();
 	Robot_attack rbt = new Robot_attack();
-	
+	Enemy e = new Enemy();
 	
 	public static byte nexts,eneme;
 	public static JTextArea event;
+	public static JFrame aa;
 	
 	public Attack() {
 		eneme = 0;
@@ -41,7 +44,7 @@ public class Attack {
 	 * @wbp.parser.entryPoint
 	 */
 	public void Attacks() {
-		JFrame aa = new JFrame();
+		aa = new JFrame();
 		aa.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		aa.setTitle("Die Schl\u00E4gerei");
 		aa.setResizable(false);
@@ -51,12 +54,21 @@ public class Attack {
 		aa.setVisible(true);
 		
 		
+		
 		aa.addMouseListener(new MouseListener() {
 
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				event.setVisible(false);
+				
+				if(Main.b_health<=0) {
+					Attack.aa.setVisible(false);
+					Main.f.setVisible(true);
+					eneme=0;
+					Main.stage=2;
+				}
+				
 				eneme+=5;
 				if(eneme==7) {
 					rbt.r_attack();

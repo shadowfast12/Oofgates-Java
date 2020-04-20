@@ -40,7 +40,6 @@ public class Main {
 	//Enemy Stats
 	public static int b_damage,b_health,b_coins,b_speed,b_exp,stage;
 	public static String b_name;
-	
 	public static JFrame f;
 	public static JTextArea event_label;
 	
@@ -48,7 +47,7 @@ public class Main {
 	private JScrollPane scrollPane;
 	
 	
-	public Main() {		
+	public Main() {
 		singl = 0;
 		stage = 0;
 		health = 100;
@@ -79,7 +78,6 @@ public class Main {
 		Set_buttons sb = new Set_buttons();
 		Liste lste = new Liste();
 		Lister lr = new Lister();
-		
 				
 		JLabel title_label = new JLabel("OofGates");
 		title_label.setFont(new Font("Times New Roman", Font.PLAIN, 40));
@@ -146,6 +144,39 @@ public class Main {
 		event_label.setBounds(10, 63, 424, 79);
 		f.getContentPane().add(event_label);
 		
+		Box verticalBox = Box.createVerticalBox();
+		verticalBox.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		verticalBox.setBackground(SystemColor.menu);
+		verticalBox.setBounds(305, 160, 119, 123);
+		f.getContentPane().add(verticalBox);
+		
+		JLabel stats_lb = new JLabel("Your Stats:");
+		stats_lb.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		verticalBox.add(stats_lb);
+		
+		JLabel sep = new JLabel("________________");
+		verticalBox.add(sep);
+		
+		JLabel health_lb = new JLabel("Health: "+health);
+		health_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox.add(health_lb);
+		
+		JLabel damage_lb = new JLabel("Damage: "+ damage);
+		damage_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox.add(damage_lb);
+		
+		JLabel armor_lb = new JLabel("Armor: "+armor);
+		armor_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox.add(armor_lb);
+		
+		JLabel speed_lb = new JLabel("Speed: "+speed);
+		speed_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox.add(speed_lb);
+		
+		JLabel coins_lb = new JLabel("Coins: "+coins);
+		coins_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox.add(coins_lb);
+		
 		
 		f.repaint();
 		f.revalidate();
@@ -161,6 +192,13 @@ public class Main {
 					e.printStackTrace();
 				}
 				sb.set_button();
+				
+				health_lb.setText("Health: "+health);
+				damage_lb.setText("Damage: "+damage);
+				armor_lb.setText("Armor: "+armor);
+				speed_lb.setText("Speed: "+speed);
+				coins_lb.setText("Coins: "+coins);
+				
 			}
 		}
 	}
