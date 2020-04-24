@@ -23,7 +23,6 @@ public class stats {
 		s.setResizable(false);
 		s.setTitle("Stats");
 		s.getContentPane().setLayout(null);
-		s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		s.setSize(200,275);
 		s.setVisible(true);
 		
