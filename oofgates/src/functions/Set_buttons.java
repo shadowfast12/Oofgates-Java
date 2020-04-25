@@ -31,6 +31,7 @@ public class Set_buttons {
 				if(Main.stage==1) {
 					at.Attacks();
 					en.Enemies("Black Man",10,50,4,2,0);
+					Main.stage=2;
 					Main.f.setVisible(false);
 				}
 				if(Main.stage==0) {
@@ -81,7 +82,8 @@ public class Set_buttons {
 		//first fight
 		if(aa==0) {
 			if(Main.stage == 1) {
-				lr.listers("A Black Man approaches with his sword drawn & forces you to either give him all your money or die!");
+				lr.listers("A Black Man approaches with his sword drawn & forces you to"
+						+"either give him all your money or die!");
 				Main.option_button.setText("Attack");
 				Main.option_button2.setText("Give");
 				Main.option_button3.setVisible(false);
@@ -89,6 +91,8 @@ public class Set_buttons {
 			
 			}
 			if(Main.stage==2) {
+				System.out.println("no");
+				lr.listers("You can go to:");
 				Main.option_button.setText("Shop");
 				Main.option_button2.setText("Forest");
 				Main.option_button3.setText("Casino");

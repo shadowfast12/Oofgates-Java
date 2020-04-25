@@ -69,6 +69,8 @@ public class shop {
 		s.getContentPane().add(scrollPane);
 		
 		Box verticalBox = Box.createVerticalBox();
+		verticalBox.setForeground(Color.GRAY);
+		verticalBox.setBackground(Color.GRAY);
 		verticalBox.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		scrollPane.setViewportView(verticalBox);
 		

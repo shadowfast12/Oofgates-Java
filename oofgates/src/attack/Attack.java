@@ -40,9 +40,33 @@ public class Attack {
 		nexts = 0;
 	}	
 	
+	private void bkm() {
+		
+		if(Main.b_health<=0) {
+			Attack.aa.setVisible(false);
+			Main.f.setVisible(true);
+			eneme=0;
+			Main.stage=2;
+		}
+		
+			event.setVisible(false);
+			
+			eneme+=5;
+			if(eneme==7) {
+				rbt.r_attack();
+			}
+			
+			nexts = 1;
+ 
+		}
+
+
+	
+	
 	/**
 	 * @wbp.parser.entryPoint
 	 */
+	
 	public void Attacks() {
 		aa = new JFrame();
 		aa.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -54,30 +78,14 @@ public class Attack {
 		aa.setSize(550,375);
 		aa.setVisible(true);
 		
-		
+				
 		
 		aa.addMouseListener(new MouseListener() {
 
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				event.setVisible(false);
-				
-				if(Main.b_health<=0) {
-					Attack.aa.setVisible(false);
-					Main.f.setVisible(true);
-					eneme=0;
-					Main.stage=2;
-				}
-				
-				eneme+=5;
-				if(eneme==7) {
-					rbt.r_attack();
-				}
-				
-				
-				nexts = 1;
-				
+				bkm();
 			}
 
 			@Override
@@ -185,6 +193,9 @@ public class Attack {
 				if(nexts==1) {
 					cg.charge();
 				}
+				else {
+					bkm();
+				}
 			}
 		});
 		Charge_button.setForeground(SystemColor.windowBorder);
@@ -196,7 +207,12 @@ public class Attack {
 		JButton Block_button = new JButton("BLOCK");
 		Block_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				bk.block();
+				if(nexts==1) {
+					bk.block();
+				}
+				else {
+					bkm();
+				}
 			}
 		});
 		Block_button.setForeground(SystemColor.windowBorder);
