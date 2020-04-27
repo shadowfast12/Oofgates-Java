@@ -43,7 +43,7 @@ public class Attack {
 	private void bkm() {
 		
 		if(Main.b_health<=0) {
-			Attack.aa.setVisible(false);
+			aa.dispose();
 			Main.f.setVisible(true);
 			eneme=0;
 			Main.stage=2;
@@ -59,9 +59,6 @@ public class Attack {
 			nexts = 1;
  
 		}
-
-
-	
 	
 	/**
 	 * @wbp.parser.entryPoint
@@ -78,7 +75,6 @@ public class Attack {
 		aa.setSize(550,375);
 		aa.setVisible(true);
 		
-				
 		
 		aa.addMouseListener(new MouseListener() {
 
@@ -229,7 +225,7 @@ public class Attack {
 		
 		event = new JTextArea();
 		event.setLineWrap(true);
-		event.setText("Event Here");
+		event.setText(Main.b_name+" has attack you!");
 		event.setFont(new Font("Myanmar Text", Font.PLAIN, 13));
 		event.setBackground(SystemColor.controlHighlight);
 		event.setEditable(false);
@@ -244,6 +240,7 @@ public class Attack {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					
 					Health_label.setText("Health: "+Main.health);
 					Damage_label.setText("Damage: "+Main.damage);
 					first_item.setText(Main.inventory[0]);

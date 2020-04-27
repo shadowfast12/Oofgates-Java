@@ -32,6 +32,7 @@ public class weapon {
 			Main.damage = d;
 			Main.weapon_dur = w;
 			Main.inventory[0] = a;
+			
 		}
 	}
 }

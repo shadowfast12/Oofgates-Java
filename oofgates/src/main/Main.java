@@ -8,7 +8,9 @@ import javax.swing.border.LineBorder;
 
 import attributes.weapon;
 import functions.Lister;
+import functions.Load_save;
 import functions.Luck;
+import functions.Save;
 import functions.Set_buttons;
 
 import java.awt.Color;
@@ -16,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -24,6 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
 
 //**use arrays for the cards in the blackjack**
 public class Main {
@@ -73,11 +78,16 @@ public class Main {
 		f.setSize(450,500);
 		f.setVisible(true);
 		
+		
 		//SEPERATE CLASSES
 		Luck l = new Luck();
 		Set_buttons sb = new Set_buttons();
 		Liste lste = new Liste();
 		Lister lr = new Lister();
+		Save s = new Save();
+		stats st = new stats();
+		Settings stg = new Settings();
+		
 				
 		JLabel title_label = new JLabel("OofGates");
 		title_label.setFont(new Font("Times New Roman", Font.PLAIN, 40));
@@ -141,7 +151,7 @@ public class Main {
 		event_label.setEditable(false);
 		event_label.setBackground(Color.LIGHT_GRAY);
 		event_label.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		event_label.setBounds(10, 63, 424, 79);
+		event_label.setBounds(10, 69, 424, 79);
 		f.getContentPane().add(event_label);
 		
 		JButton stats_btn = new JButton("Stats");
@@ -150,12 +160,21 @@ public class Main {
 		stats_btn.setBounds(299, 342, 125, 50);
 		stats_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				stats st = new stats();
 				st.statz();
 			}
 		});
 		f.getContentPane().add(stats_btn);
 		
+		JButton settings_btn = new JButton("Settings");
+		settings_btn.setForeground(SystemColor.windowBorder);
+		settings_btn.setBackground(SystemColor.activeCaptionBorder);
+		settings_btn.setBounds(299, 457, 125, 14);
+		f.getContentPane().add(settings_btn);
+		settings_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				stg.setting();
+			}
+		});
 		
 		f.repaint();
 		f.revalidate();
@@ -171,7 +190,9 @@ public class Main {
 					e.printStackTrace();
 				}
 				sb.set_button();
-					
+				if(Main.stage != 0) {
+					s.save();
+				}
 			}
 		}
 	}

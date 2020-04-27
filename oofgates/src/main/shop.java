@@ -23,10 +23,20 @@ public class shop {
 	weapon w = new weapon();
 	
 	public static String type;
+	public static JLabel cost_lb,name_lb,damage_lb;
+	
+	public void set_but(int n1,int n2,String name) {
+		name_lb.setText(name);
+		cost_lb.setText("Cost: $"+n1);
+		damage_lb.setText("Damage: "+n2);
+		
+		type=name;
+	}
 	
 	
 	/**
 	 * @wbp.parser.entryPoint
+	 * 
 	 */
 	public void shope() {
 		JFrame s;
@@ -37,7 +47,7 @@ public class shop {
 		s.setTitle("Shop");
 		s.setType(Type.NORMAL);
 		s.getContentPane().setLayout(null);
-		s.setSize(450, 325);
+		s.setSize(446, 300);
 		s.setVisible(true);
 
 		
@@ -82,7 +92,7 @@ public class shop {
 		select_btn.setBackground(SystemColor.activeCaptionBorder);
 		select_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				type="Iron Sword";
+				set_but(35,20,"Iron Sword");
 			}
 		});
 		verticalBox.add(select_btn);
@@ -99,7 +109,7 @@ public class shop {
 		verticalBox.add(button_1);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				type="Mace";
+				set_but(50,25,"Mace");
 			}
 		});
 		
@@ -115,7 +125,7 @@ public class shop {
 		verticalBox.add(button_2);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				type="Crowbar";
+				set_but(20,15,"Crowbar");
 			}
 		});
 		
@@ -131,13 +141,25 @@ public class shop {
 		verticalBox.add(button_3);
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				type="Sabre";
+				set_but(80,40,"Sabre");
 			}
 		});
-
 		
-		Canvas canvas = new Canvas();
-		canvas.setBounds(150, 53, 130, 130);
-		s.getContentPane().add(canvas);
+		Box verticalBox_1 = Box.createVerticalBox();
+		verticalBox_1.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		verticalBox_1.setBounds(303, 53, 121, 66);
+		s.getContentPane().add(verticalBox_1);
+		
+		name_lb = new JLabel("NAME");
+		verticalBox_1.add(name_lb);
+		name_lb.setFont(new Font("Tahoma", Font.BOLD, 15));
+		
+		cost_lb = new JLabel("cost");
+		cost_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox_1.add(cost_lb);
+		
+		damage_lb = new JLabel("damage");
+		damage_lb.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		verticalBox_1.add(damage_lb);
 	}
 }

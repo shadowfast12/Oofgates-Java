@@ -47,26 +47,27 @@ public class Set_buttons {
 
 		class ron1 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
-					if(Main.stage==1) {
-						Main.coins = 0;
-						lr.listers("You have lost all your coins");
-						Main.stage=2;
-					}
-					if(Main.stage==0) {
-						w.weaponr(12,-5,25,"Rusty Sword",false);
-						Main.stage=1;
-					}
-					aa=0;
+				//give money
+				if(Main.stage==1) {
+					Main.coins = 0;
+					lr.listers("You have lost all your coins");
+					Main.stage=2;
+				}
+				if(Main.stage==0) {
+					w.weaponr(12,-5,25,"Rusty Sword",false);
+					Main.stage=1;
+				}
+				aa=0;
 				}
 			}
 		ron1 rn1 = new ron1();
 		class ron2 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
-			if(Main.stage==0) {
-				w.weaponr(8,0,30,"Dagger",false);
-				Main.stage=1;
+				if(Main.stage==0) {
+					w.weaponr(8,0,30,"Dagger",false);
+					Main.stage=1;
 				}
-			aa=0;
+				aa=0;
 			}
 		}
 		ron2 rn2 = new ron2();
@@ -83,7 +84,7 @@ public class Set_buttons {
 		if(aa==0) {
 			if(Main.stage == 1) {
 				lr.listers("A Black Man approaches with his sword drawn & forces you to"
-						+"either give him all your money or die!");
+						+" either give him all your money or die!");
 				Main.option_button.setText("Attack");
 				Main.option_button2.setText("Give");
 				Main.option_button3.setVisible(false);
