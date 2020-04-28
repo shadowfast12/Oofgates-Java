@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import attack.Attack;
 import attributes.Enemy;
 import attributes.weapon;
+import main.Casino;
 import main.Main;
 import main.shop;
 
@@ -19,6 +20,7 @@ public class Set_buttons {
 	Luck lk = new Luck();
 	Enemy en = new Enemy();
 	shop s = new shop();
+	Casino c = new Casino();
 
 	public void actions() {
 		class ron implements ActionListener{
@@ -63,6 +65,9 @@ public class Set_buttons {
 		ron1 rn1 = new ron1();
 		class ron2 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
+				if(Main.stage==2) {
+					c.casino();
+				}
 				if(Main.stage==0) {
 					w.weaponr(8,0,30,"Dagger",false);
 					Main.stage=1;
@@ -92,7 +97,6 @@ public class Set_buttons {
 			
 			}
 			if(Main.stage==2) {
-				System.out.println("no");
 				lr.listers("You can go to:");
 				Main.option_button.setText("Shop");
 				Main.option_button2.setText("Forest");
