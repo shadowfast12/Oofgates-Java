@@ -17,6 +17,7 @@ import java.awt.SystemColor;
 public class Settings {
 	
 	Load_save ls = new Load_save();
+	Dev_gui d = new Dev_gui();
 	
 	/**
 	 * @wbp.parser.entryPoint
@@ -49,5 +50,16 @@ public class Settings {
 				}
 			}
 		});
+		
+		JButton dev_btn = new JButton("Developer Mode");
+		dev_btn.setBounds(10, 84, 113, 32);
+		s.getContentPane().add(dev_btn);
+		dev_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				d.dev();
+			}
+		});
+		
+		
 	}
 }

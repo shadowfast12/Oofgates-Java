@@ -78,10 +78,27 @@ public class Set_buttons {
 		ron2 rn2 = new ron2();
 
 			
-		Main.option_button.addActionListener(rn);
+		Main.option_button1.addActionListener(rn);
 		Main.option_button2.addActionListener(rn1);
 		Main.option_button3.addActionListener(rn2);
 	
+	}
+	
+	public void restart_vis(int i) {
+		for(int x=0; x<i+1;x++) {
+			if(x==1) {
+				Main.option_button1.setVisible(true);
+			}
+			if(x==2) {
+				Main.option_button2.setVisible(true);
+			}
+			if(x==3) {
+				Main.option_button3.setVisible(true);
+			}
+			if(x==4) {
+				Main.option_button4.setVisible(true);
+			}
+		}
 	}
 	
 	public void set_button() {
@@ -90,7 +107,7 @@ public class Set_buttons {
 			if(Main.stage == 1) {
 				lr.listers("A Black Man approaches with his sword drawn & forces you to"
 						+" either give him all your money or die!");
-				Main.option_button.setText("Attack");
+				Main.option_button1.setText("Attack");
 				Main.option_button2.setText("Give");
 				Main.option_button3.setVisible(false);
 				
@@ -98,10 +115,11 @@ public class Set_buttons {
 			}
 			if(Main.stage==2) {
 				lr.listers("You can go to:");
-				Main.option_button.setText("Shop");
+				Main.option_button1.setText("Shop");
 				Main.option_button2.setText("Forest");
 				Main.option_button3.setText("Casino");
 				Main.option_button4.setText("Arena");
+				restart_vis(4);
 			}
 			aa++;
 		}

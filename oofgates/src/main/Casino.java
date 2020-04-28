@@ -10,12 +10,24 @@ import functions.Luck;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.JSpinner;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 
 public class Casino {
 	
 	Luck l = new Luck();
 	
 	ArrayList<Byte> cards = new ArrayList<Byte>();
+	private int bet_amnt;
+
 	
 	//Method to sets the cards to values in array
 	public void val_cards() {
@@ -82,16 +94,18 @@ public class Casino {
 	public void casino() {
 		JFrame c;
 		c= new JFrame();
+		c.getContentPane().setBackground(SystemColor.activeCaptionBorder);
 		c.setTitle("Le Casino");
 		c.setSize(350,350);
 		c.getContentPane().setLayout(null);
 		
 		JLabel title_lb = new JLabel("Le Casino");
-		title_lb.setFont(new Font("Tahoma", Font.BOLD, 18));
+		title_lb.setFont(new Font("Tahoma", Font.BOLD, 20));
 		title_lb.setBounds(10, 11, 127, 25);
 		c.getContentPane().add(title_lb);
 		
 		JTextArea welcome_lb = new JTextArea();
+		welcome_lb.setBackground(SystemColor.activeCaptionBorder);
 		welcome_lb.setLineWrap(true);
 		welcome_lb.setColumns(2);
 		welcome_lb.setRows(2);
@@ -100,11 +114,31 @@ public class Casino {
 		welcome_lb.setBounds(10, 65, 314, 52);
 		c.getContentPane().add(welcome_lb);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(68, 150, 165, 39);
-		c.getContentPane().add(textArea);
-		c.setVisible(true);
+		SpinnerModel value = new SpinnerNumberModel(0,0,Main.coins,1);
+		JSpinner spinner = new JSpinner(value);
+		spinner.setForeground(SystemColor.activeCaptionBorder);
+		spinner.setBackground(SystemColor.activeCaptionBorder);
+		spinner.setBounds(108, 128, 87, 37);
+		c.getContentPane().add(spinner);
+		spinner.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				bet_amnt = (int) ((JSpinner)e.getSource()).getValue();
+			}
+		});
+				
 		
-		val_cards();
+		JButton bet_btn = new JButton("BET");
+		bet_btn.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		bet_btn.setBounds(93, 176, 127, 37);
+		c.getContentPane().add(bet_btn);
+		c.setVisible(true);
+		bet_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.coins-=bet_amnt;
+				
+			}
+		});
+		
+		
 	}
 }

@@ -37,7 +37,7 @@ public class Main {
 	public static float weapon_dur;
 	public static String[] inventory = {"a","Cloth Armor", "Bread", "Nothing", "Nothing"},events;
 	
-	public static JButton option_button,option_button2,option_button3,option_button4;
+	public static JButton option_button1,option_button2,option_button3,option_button4;
 	public static JList<String> list,list_1;
 	
 	public static List<String>all_events = new ArrayList<String>();
@@ -99,11 +99,11 @@ public class Main {
 		credit_label.setBounds(48, 44, 119, 14);
 		f.getContentPane().add(credit_label);
 		
-		option_button = new JButton("Rock");
-		option_button.setForeground(SystemColor.windowBorder);
-		option_button.setBackground(SystemColor.activeCaptionBorder);
-		option_button.setBounds(10, 153, 150, 50);
-		f.getContentPane().add(option_button);
+		option_button1 = new JButton("Rock");
+		option_button1.setForeground(SystemColor.windowBorder);
+		option_button1.setBackground(SystemColor.activeCaptionBorder);
+		option_button1.setBounds(10, 153, 150, 50);
+		f.getContentPane().add(option_button1);
 		
 		option_button2 = new JButton("Rusty Sword");
 		option_button2.setForeground(SystemColor.windowBorder);
