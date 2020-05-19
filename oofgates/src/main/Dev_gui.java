@@ -20,7 +20,7 @@ public class Dev_gui {
 	public void dev() {
 		JFrame d;
 		d = new JFrame();
-		d.setTitle("Developer Console");
+		d.setTitle("Dev Console");
 		d.getContentPane().setBackground(SystemColor.activeCaptionBorder);
 		d.setResizable(false);
 		d.setVisible(true);

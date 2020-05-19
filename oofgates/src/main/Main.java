@@ -75,7 +75,7 @@ public class Main {
 		f.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		f.getContentPane().setLayout(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(450,500);
+		f.setSize(450,520);
 		f.setVisible(true);
 		
 		
@@ -168,7 +168,7 @@ public class Main {
 		JButton settings_btn = new JButton("Settings");
 		settings_btn.setForeground(SystemColor.windowBorder);
 		settings_btn.setBackground(SystemColor.activeCaptionBorder);
-		settings_btn.setBounds(299, 457, 125, 14);
+		settings_btn.setBounds(299, 457, 125, 21);
 		f.getContentPane().add(settings_btn);
 		settings_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

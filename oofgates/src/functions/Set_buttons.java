@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import attack.Attack;
 import attributes.Enemy;
 import attributes.weapon;
-import main.Casino;
+import casino.Casino;
 import main.Main;
 import main.shop;
 

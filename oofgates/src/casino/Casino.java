@@ -1,4 +1,4 @@
-package main;
+package casino;
 
 import java.awt.List;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 
 import functions.Luck;
+import main.Main;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextArea;
@@ -27,6 +29,8 @@ public class Casino {
 	
 	ArrayList<Byte> cards = new ArrayList<Byte>();
 	private int bet_amnt;
+	
+	public static int raw_num;
 
 	
 	//Method to sets the cards to values in array
@@ -63,6 +67,8 @@ public class Casino {
 			
 			if(Math.floor(temp_b/x)==temp_b/x) {
 				number=x;
+				raw_num=x;
+				
 				type_b=String.valueOf(x);
 				
 				//Ace Card
@@ -100,8 +106,8 @@ public class Casino {
 		c.getContentPane().setLayout(null);
 		
 		JLabel title_lb = new JLabel("Le Casino");
-		title_lb.setFont(new Font("Tahoma", Font.BOLD, 20));
-		title_lb.setBounds(10, 11, 127, 25);
+		title_lb.setFont(new Font("Tahoma", Font.BOLD, 30));
+		title_lb.setBounds(12, 13, 170, 25);
 		c.getContentPane().add(title_lb);
 		
 		JTextArea welcome_lb = new JTextArea();
@@ -134,8 +140,11 @@ public class Casino {
 		c.setVisible(true);
 		bet_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Main.coins-=bet_amnt;
-				
+				if((Main.coins-=bet_amnt)>=0) {
+					Main.coins-=bet_amnt;
+					Blackjack bj = new Blackjack();
+					bj.blackjacks();
+				}
 			}
 		});
 		
