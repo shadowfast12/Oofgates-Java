@@ -67,7 +67,7 @@ public class Attack {
 	public void Attacks() {
 		aa = new JFrame();
 		aa.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		aa.setTitle("Die Schl\u00E4gerei");
+		aa.setTitle("Fight!");
 		aa.setResizable(false);
 		aa.getContentPane().setBackground(SystemColor.controlShadow);
 		aa.getContentPane().setLayout(null);
@@ -153,7 +153,7 @@ public class Attack {
 		fifth_item.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		verticalBox.add(fifth_item);
 		
-		JLabel title = new JLabel("Die Schl\u00E4gerei");
+		JLabel title = new JLabel("Brawl");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setVerticalAlignment(SwingConstants.TOP);
 		title.setFont(new Font("Modern No. 20", Font.PLAIN, 32));
