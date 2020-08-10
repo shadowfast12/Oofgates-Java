@@ -65,7 +65,7 @@ public class Set_buttons {
 		ron1 rn1 = new ron1();
 		class ron2 implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
-				if(Main.stage==2) {
+				if(Main.stage==2 && Main.coins>0) {
 					c.casino();
 				}
 				if(Main.stage==0) {

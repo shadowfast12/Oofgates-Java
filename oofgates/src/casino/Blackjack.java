@@ -25,10 +25,10 @@ public class Blackjack{
 		
 	ArrayList<Integer> cards = new ArrayList<Integer>();
 	
-	private int number, where, total_amnt, bot_total;
+	private int number, where, total_amnt, bot_total, aces;
 	
-	private JPanel user, panel_2, panel_3;
-	private JButton hit_btn, btnStand, op_lb, button;
+	private JPanel user, panel_2, ace_pan;
+	private JButton hit_btn, btnStand, one_btn, elv_btn;
 	private JPanel panel, panel_1;
 	private JLabel hit_lb, totalNum_lb, CrntNum_lb, AllNum_lb, botCur_lb, lblTotalAmount,
 		who_lb, who2_lb, lblNewLabel, dhit_lb, dtotal_lb, ace_lb;
@@ -82,8 +82,10 @@ public class Blackjack{
 				
 		cards.remove(temp_b);
 		
+		//choose number for ace
 		if(number==1) {
-			
+			ace_pan.setVisible(true);
+			aces++;
 		}
 		
 		//Jack Card
@@ -117,6 +119,18 @@ public class Blackjack{
 			
 		}
 	}
+	
+	public void add_a(int a) {
+		if(aces>0) {
+			aces--;
+			total_amnt+=a;
+			if(aces==0) {
+				ace_pan.setVisible(false);
+			}
+		}
+	}
+
+	
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -230,26 +244,37 @@ public class Blackjack{
 		lblNewLabel.setBounds(252, 13, 263, 59);
 		BlackJack.getContentPane().add(lblNewLabel);
 		
-		panel_3 = new JPanel();
-		panel_3.setBounds(432, 298, 294, 92);
-		BlackJack.getContentPane().add(panel_3);
-		panel_3.setLayout(null);
+		ace_pan = new JPanel();
+		ace_pan.setBounds(432, 298, 294, 92);
+		BlackJack.getContentPane().add(ace_pan);
+		ace_pan.setLayout(null);
+		ace_pan.setVisible(false);
 		
 		ace_lb = new JLabel("Choose Number for Ace");
 		ace_lb.setHorizontalAlignment(SwingConstants.CENTER);
 		ace_lb.setBounds(0, 0, 294, 19);
 		ace_lb.setFont(new Font("Tahoma", Font.BOLD, 15));
-		panel_3.add(ace_lb);
+		ace_pan.add(ace_lb);
 		
-		op_lb = new JButton("1");
-		op_lb.setFont(new Font("Tahoma", Font.BOLD, 15));
-		op_lb.setBounds(10, 32, 100, 35);
-		panel_3.add(op_lb);
+		one_btn = new JButton("1");
+		one_btn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		one_btn.setBounds(10, 32, 100, 35);
+		ace_pan.add(one_btn);
+		one_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				add_a(1);
+			}
+		});
 		
-		button = new JButton("11");
-		button.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button.setBounds(182, 32, 100, 35);
-		panel_3.add(button);
+		elv_btn = new JButton("11");
+		elv_btn.setFont(new Font("Tahoma", Font.BOLD, 15));
+		elv_btn.setBounds(182, 32, 100, 35);
+		ace_pan.add(elv_btn);
+		elv_btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				add_a(11);
+			}
+		});
 			
 	}
 }
