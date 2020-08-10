@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.BorderLayout;
 
 
 public class Blackjack{
@@ -26,11 +27,11 @@ public class Blackjack{
 	
 	private int number, where, total_amnt, bot_total;
 	
-	private JPanel user, panel_2;
-	private JButton hit_btn, btnStand;
+	private JPanel user, panel_2, panel_3;
+	private JButton hit_btn, btnStand, op_lb, button;
 	private JPanel panel, panel_1;
 	private JLabel hit_lb, totalNum_lb, CrntNum_lb, AllNum_lb, botCur_lb, lblTotalAmount,
-		who_lb, who2_lb, lblNewLabel, dhit_lb, dtotal_lb;
+		who_lb, who2_lb, lblNewLabel, dhit_lb, dtotal_lb, ace_lb;
 	
 	Luck l = new Luck();
 	Random ran = new Random();
@@ -80,6 +81,10 @@ public class Blackjack{
 		number = mm_a[temp_b];
 				
 		cards.remove(temp_b);
+		
+		if(number==1) {
+			
+		}
 		
 		//Jack Card
 		if(number==11) {
@@ -224,6 +229,27 @@ public class Blackjack{
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblNewLabel.setBounds(252, 13, 263, 59);
 		BlackJack.getContentPane().add(lblNewLabel);
+		
+		panel_3 = new JPanel();
+		panel_3.setBounds(432, 298, 294, 92);
+		BlackJack.getContentPane().add(panel_3);
+		panel_3.setLayout(null);
+		
+		ace_lb = new JLabel("Choose Number for Ace");
+		ace_lb.setHorizontalAlignment(SwingConstants.CENTER);
+		ace_lb.setBounds(0, 0, 294, 19);
+		ace_lb.setFont(new Font("Tahoma", Font.BOLD, 15));
+		panel_3.add(ace_lb);
+		
+		op_lb = new JButton("1");
+		op_lb.setFont(new Font("Tahoma", Font.BOLD, 15));
+		op_lb.setBounds(10, 32, 100, 35);
+		panel_3.add(op_lb);
+		
+		button = new JButton("11");
+		button.setFont(new Font("Tahoma", Font.BOLD, 15));
+		button.setBounds(182, 32, 100, 35);
+		panel_3.add(button);
 			
 	}
 }
