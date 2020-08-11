@@ -1,7 +1,6 @@
 package casino;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -18,7 +17,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
 
 
 public class Blackjack{
@@ -38,7 +36,7 @@ public class Blackjack{
 	
 	//Method to sets the cards to values in array
 	public void val_cards() {
-		
+		number=0;total_amnt=0;bot_total=0;aces=0;
 		where=0;
 		
 		if(cards.size()>0) {
@@ -71,7 +69,7 @@ public class Blackjack{
 	}
 	
 	//Hit Method
-	public void hit(boolean b) {
+	public void hit(int i) {
 		//true = player, false = bot
 		 		
 		int temp_b = ran.nextInt(cards.size());
@@ -101,13 +99,17 @@ public class Blackjack{
 			number=10;
 		}
 		
-		if(b = true) {
+		if(i == 1) {
 			hit_lb.setText(String.valueOf(number));
 			total_amnt+=number;
+			totalNum_lb.setText(String.valueOf(total_amnt));
+			
 		}
-		else {
+		else{
 			dhit_lb.setText(String.valueOf(number));
 			bot_total+=number;
+			dtotal_lb.setText(String.valueOf(bot_total));
+			
 		}
 	}
 	
@@ -120,10 +122,28 @@ public class Blackjack{
 		}
 	}
 	
+	//bot func
+	public void bot_d() {
+		
+		if(bot_total<17) {
+			hit(2);
+			
+			if(number==1 && bot_total<=10) {
+				bot_total+=10;
+			}
+		}
+		else {
+			stand();
+		}
+	}
+	
+	//aces set
 	public void add_a(int a) {
 		if(aces>0) {
 			aces--;
 			total_amnt+=a;
+			totalNum_lb.setText(String.valueOf(total_amnt));
+			
 			if(aces==0) {
 				ace_pan.setVisible(false);
 			}
@@ -173,7 +193,8 @@ public class Blackjack{
 		BlackJack.getContentPane().add(hit_btn);
 		hit_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				hit(true);
+				hit(1);
+				bot_d();
 			}
 		});
 		
@@ -262,7 +283,7 @@ public class Blackjack{
 		ace_pan.add(one_btn);
 		one_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				add_a(1);
+				add_a(0);
 			}
 		});
 		
@@ -272,9 +293,13 @@ public class Blackjack{
 		ace_pan.add(elv_btn);
 		elv_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				add_a(11);
+				add_a(10);
 			}
 		});
-			
+		
+		hit(1);
+		hit(1);
+		hit(2);
+		hit(2);
 	}
 }
