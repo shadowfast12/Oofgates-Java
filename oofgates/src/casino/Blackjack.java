@@ -38,7 +38,7 @@ public class Blackjack{
 	public void val_cards() {
 		number=0;total_amnt=0;bot_total=0;aces=0;
 		where=0;
-		
+		 
 		if(cards.size()>0) {
 			for(int x=cards.size()-1;x>-1;x--)
 				cards.remove(x);
@@ -61,7 +61,7 @@ public class Blackjack{
 	public void settlement() {
 		
 		if(total_amnt<=21 && total_amnt>bot_total) {
-			Main.coins+=(Casino.bet_amnt*2);
+			
 		}
 		
 		
@@ -125,17 +125,23 @@ public class Blackjack{
 	//bot func
 	public void bot_d() {
 		
-		if(bot_total<17) {
-			hit(2);
-			
-			if(number==1 && bot_total<=10) {
-				bot_total+=10;
+		if(total_amnt<=21) {
+			if(bot_total<17 || bot_total<total_amnt) {
+				hit(2);
+				
+				if(number==1 && bot_total<=10) {
+					bot_total+=10;
+				}
+			}
+			else {
+				stand();
 			}
 		}
 		else {
 			stand();
 		}
 	}
+		
 	
 	//aces set
 	public void add_a(int a) {
@@ -204,7 +210,7 @@ public class Blackjack{
 		BlackJack.getContentPane().add(btnStand);
 		btnStand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				stand();
 			}
 		});
 		
