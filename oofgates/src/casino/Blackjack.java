@@ -207,7 +207,7 @@ public class Blackjack{
 		btnStand = new JButton("Stand");
 		btnStand.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnStand.setBounds(186, 322, 128, 47);
-		BlackJack.getContentPane().add(btnStand);
+		BlackJack.getContentPane().add(btnStand);									
 		btnStand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				stand();
