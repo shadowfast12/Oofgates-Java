@@ -25,7 +25,7 @@ import javax.swing.JButton;
 public class Casino {
 	
 	Luck l = new Luck();
-	Blackjack bj = new Blackjack();
+
 	
 	ArrayList<Byte> cards = new ArrayList<Byte>();
 	
@@ -79,6 +79,7 @@ public class Casino {
 			public void actionPerformed(ActionEvent e) {
 				if((Main.coins-=bet_amnt)>=0) {
 					Main.coins-=bet_amnt;
+					Blackjack bj = new Blackjack();
 					bj.blackjacks();
 				}
 			}

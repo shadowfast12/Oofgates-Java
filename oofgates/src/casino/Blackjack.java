@@ -23,13 +23,15 @@ public class Blackjack{
 		
 	ArrayList<Integer> cards = new ArrayList<Integer>();
 	
-	private int number, where, total_amnt, bot_total, aces;
+	private int number, total_amnt, bot_total, aces;
 	
 	private JPanel user, panel_2, ace_pan;
 	private JButton hit_btn, btnStand, one_btn, elv_btn;
 	private JPanel panel, panel_1;
 	private JLabel hit_lb, totalNum_lb, CrntNum_lb, AllNum_lb, botCur_lb, lblTotalAmount,
 		who_lb, who2_lb, lblNewLabel, dhit_lb, dtotal_lb, ace_lb;
+	private boolean bot_end, pp_end; 
+	private JFrame BlackJack;
 	
 	Luck l = new Luck();
 	Random ran = new Random();
@@ -37,7 +39,7 @@ public class Blackjack{
 	//Method to sets the cards to values in array
 	public void val_cards() {
 		number=0;total_amnt=0;bot_total=0;aces=0;
-		where=0;
+		pp_end=false;bot_end=false;
 		 
 		if(cards.size()>0) {
 			for(int x=cards.size()-1;x>-1;x--)
@@ -60,12 +62,13 @@ public class Blackjack{
 	//Method to determine who won
 	public void settlement() {
 		
-		if(total_amnt<=21 && total_amnt>bot_total) {
-			
+		if(total_amnt>21) {
+			BlackJack.setVisible(false);
 		}
-		
-		
-		
+		if(bot_total>21) {
+			Main.coins+=((Casino.bet_amnt)*2);
+			BlackJack.setVisible(false);
+		}
 	}
 	
 	//Hit Method
@@ -115,10 +118,16 @@ public class Blackjack{
 	
 	//Stand Method
 	public void stand(){
-		where++;
 		
-		if(where==2) {
+		if(pp_end==true && bot_end==true) {
 			
+			if(total_amnt>bot_total) {
+				Main.coins+=((Casino.bet_amnt)*2);
+			}
+			if(total_amnt==bot_total) {
+				Main.coins+=Casino.bet_amnt;
+			}
+			BlackJack.setVisible(false);
 		}
 	}
 	
@@ -134,15 +143,17 @@ public class Blackjack{
 				}
 			}
 			else {
+				bot_end=true;
 				stand();
 			}
 		}
 		else {
+			bot_end=true;
 			stand();
 		}
+		settlement();
 	}
-		
-	
+			
 	//aces set
 	public void add_a(int a) {
 		if(aces>0) {
@@ -155,14 +166,13 @@ public class Blackjack{
 			}
 		}
 	}
-
 	
 	/**
 	 * @wbp.parser.entryPoint
 	 */
 	public void blackjacks() {
 		
-		JFrame BlackJack = new JFrame();
+		BlackJack = new JFrame();
 		BlackJack.getContentPane().setBackground(SystemColor.windowBorder);
 		BlackJack.setBackground(SystemColor.textInactiveText);
 		BlackJack.getContentPane().setLayout(null);
@@ -200,6 +210,7 @@ public class Blackjack{
 		hit_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				hit(1);
+				settlement();
 				bot_d();
 			}
 		});
@@ -210,7 +221,12 @@ public class Blackjack{
 		BlackJack.getContentPane().add(btnStand);									
 		btnStand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				pp_end = true;
 				stand();
+				
+				while(bot_end==false){
+					bot_d();
+				}
 			}
 		});
 		
@@ -303,6 +319,7 @@ public class Blackjack{
 			}
 		});
 		
+		//first blackjack stuff
 		hit(1);
 		hit(1);
 		hit(2);
