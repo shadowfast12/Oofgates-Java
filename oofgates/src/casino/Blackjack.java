@@ -313,6 +313,13 @@ public class Blackjack{
 		elv_btn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		elv_btn.setBounds(182, 32, 100, 35);
 		ace_pan.add(elv_btn);
+		
+		JPanel popup = new JPanel();
+		popup.setBounds(270, 160, 230, 75);
+		BlackJack.getContentPane().add(popup);
+		
+		JLabel bj_mess = new JLabel("message_here");
+		popup.add(bj_mess);
 		elv_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				add_a(10);
