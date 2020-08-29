@@ -25,7 +25,7 @@ public class Blackjack{
 	
 	private int number, total_amnt, bot_total, aces;
 	
-	private JPanel user, panel_2, ace_pan;
+	private JPanel popup,user, panel_2, ace_pan;
 	private JButton hit_btn, btnStand, one_btn, elv_btn;
 	private JPanel panel, panel_1;
 	private JLabel hit_lb, totalNum_lb, CrntNum_lb, AllNum_lb, botCur_lb, lblTotalAmount,
@@ -182,6 +182,11 @@ public class Blackjack{
 		//set cards
 		val_cards();
 		
+		popup = new JPanel();
+		popup.setBounds(270, 160, 230, 75);
+		BlackJack.getContentPane().add(popup);
+		popup.setVisible(false);
+		
 		user = new JPanel();
 		user.setBounds(13, 130, 150, 150);
 		BlackJack.getContentPane().add(user);
@@ -313,10 +318,7 @@ public class Blackjack{
 		elv_btn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		elv_btn.setBounds(182, 32, 100, 35);
 		ace_pan.add(elv_btn);
-		
-		JPanel popup = new JPanel();
-		popup.setBounds(270, 160, 230, 75);
-		BlackJack.getContentPane().add(popup);
+	 
 		
 		JLabel bj_mess = new JLabel("message_here");
 		popup.add(bj_mess);
