@@ -43,7 +43,7 @@ public class Main {
 	public static List<String>all_events = new ArrayList<String>();
 	
 	//Enemy Stats
-	public static int b_damage,b_health,b_coins,b_speed,b_exp,stage;
+	public static int b_damage,b_health,b_coins,b_speed,b_exp,stage,index;
 	public static String b_name;
 	public static JFrame f;
 	public static JTextArea event_label;

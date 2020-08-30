@@ -30,7 +30,7 @@ public class Settings {
 		s.setTitle("Settings");
 		s.getContentPane().setLayout(null);
 		s.setVisible(true);
-		s.setSize(200, 200);
+		s.setSize(225, 200);
 		
 		JLabel title_lb = new JLabel("Settings");
 		title_lb.setFont(new Font("Tahoma", Font.BOLD, 15));

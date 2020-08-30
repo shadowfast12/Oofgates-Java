@@ -36,6 +36,7 @@ public class Set_buttons {
 					Main.stage=2;
 					Main.f.setVisible(false);
 				}
+				//get rock
 				if(Main.stage==0) {
 					w.weaponr(5,-1,15,"Rock",true);
 					Main.stage=1;
@@ -55,6 +56,7 @@ public class Set_buttons {
 					lr.listers("You have lost all your coins");
 					Main.stage=2;
 				}
+				//get rusty sword
 				if(Main.stage==0) {
 					w.weaponr(12,-5,25,"Rusty Sword",false);
 					Main.stage=1;
@@ -68,6 +70,7 @@ public class Set_buttons {
 				if(Main.stage==2 && Main.coins>0) {
 					c.casino();
 				}
+				//get dagger
 				if(Main.stage==0) {
 					w.weaponr(8,0,30,"Dagger",false);
 					Main.stage=1;
@@ -101,6 +104,7 @@ public class Set_buttons {
 		}
 	}
 	
+	//set the buttons
 	public void set_button() {
 		//first fight
 		if(aa==0) {

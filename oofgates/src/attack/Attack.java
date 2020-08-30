@@ -34,6 +34,7 @@ public class Attack {
 	public static byte nexts,eneme;
 	public static JTextArea event;
 	public static JFrame aa;
+	public static MouseListener click;
 	
 	public Attack() {
 		eneme = 0;
@@ -75,13 +76,18 @@ public class Attack {
 		aa.setSize(550,375);
 		aa.setVisible(true);
 		
+		Main.index=0;
 		
-		aa.addMouseListener(new MouseListener() {
-
+		click = new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				bkm();
+				if(Main.index==0) {
+					bkm();
+				}
+				if(Main.index==1) {
+					
+				}
 			}
 
 			@Override
@@ -103,8 +109,9 @@ public class Attack {
 			public void mouseExited(MouseEvent e) {
 				
 			}
-		});
+		};
 		
+		aa.addMouseListener(click);		
 		
 		Box verticalBox = Box.createVerticalBox();
 		verticalBox.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));

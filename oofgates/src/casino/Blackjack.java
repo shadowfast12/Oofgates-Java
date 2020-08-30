@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
+import java.awt.Color;
 
 
 public class Blackjack{
@@ -25,7 +27,8 @@ public class Blackjack{
 	
 	private int number, total_amnt, bot_total, aces;
 	
-	private JPanel popup,user, panel_2, ace_pan;
+	private JTextArea event;
+	private JPanel user, panel_2, ace_pan;
 	private JButton hit_btn, btnStand, one_btn, elv_btn;
 	private JPanel panel, panel_1;
 	private JLabel hit_lb, totalNum_lb, CrntNum_lb, AllNum_lb, botCur_lb, lblTotalAmount,
@@ -39,7 +42,7 @@ public class Blackjack{
 	//Method to sets the cards to values in array
 	public void val_cards() {
 		number=0;total_amnt=0;bot_total=0;aces=0;
-		pp_end=false;bot_end=false;
+		pp_end=false;bot_end=false;Main.index=1;
 		 
 		if(cards.size()>0) {
 			for(int x=cards.size()-1;x>-1;x--)
@@ -63,11 +66,12 @@ public class Blackjack{
 	public void settlement() {
 		
 		if(total_amnt>21) {
-			BlackJack.setVisible(false);
+			popup.setVisible(true);
+			bj_mess.setText("Busted! You lost $"+Casino.bet_amnt);
 		}
 		if(bot_total>21) {
 			Main.coins+=((Casino.bet_amnt)*2);
-			BlackJack.setVisible(false);
+			popup.setVisible(true);
 		}
 	}
 	
@@ -173,7 +177,8 @@ public class Blackjack{
 	public void blackjacks() {
 		
 		BlackJack = new JFrame();
-		BlackJack.getContentPane().setBackground(SystemColor.windowBorder);
+		BlackJack.setTitle("BlackJack");
+		BlackJack.getContentPane().setBackground(new Color(192, 192, 192));
 		BlackJack.setBackground(SystemColor.textInactiveText);
 		BlackJack.getContentPane().setLayout(null);
 		BlackJack.setVisible(true);
@@ -182,10 +187,17 @@ public class Blackjack{
 		//set cards
 		val_cards();
 		
-		popup = new JPanel();
-		popup.setBounds(270, 160, 230, 75);
-		BlackJack.getContentPane().add(popup);
-		popup.setVisible(false);
+		event = new JTextArea();
+		event.setText("event_here");
+		event.setWrapStyleWord(true);
+		event.setColumns(8);
+		event.setRows(33);
+		event.setLineWrap(true);
+		event.setFont(new Font("Myanmar Text", Font.BOLD, 13));
+		event.setEditable(false);
+		event.setBackground(SystemColor.controlHighlight);
+		event.setBounds(282, 156, 200, 79);
+		BlackJack.getContentPane().add(event);
 		
 		user = new JPanel();
 		user.setBounds(13, 130, 150, 150);
@@ -318,10 +330,6 @@ public class Blackjack{
 		elv_btn.setFont(new Font("Tahoma", Font.BOLD, 15));
 		elv_btn.setBounds(182, 32, 100, 35);
 		ace_pan.add(elv_btn);
-	 
-		
-		JLabel bj_mess = new JLabel("message_here");
-		popup.add(bj_mess);
 		elv_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				add_a(10);
