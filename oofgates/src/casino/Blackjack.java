@@ -62,16 +62,21 @@ public class Blackjack{
 		
 	}
 	
+	public void pop_up(String s, boolean b, int i) {
+		event.setText(s);
+		event.setVisible(b);
+		
+		Main.coins+=(Casino.bet_amnt*i);
+	}
+	
 	//Method to determine who won
 	public void settlement() {
 		
 		if(total_amnt>21) {
-			popup.setVisible(true);
-			bj_mess.setText("Busted! You lost $"+Casino.bet_amnt);
+			pop_up("Busted! You've lost $"+Casino.bet_amnt,true,0);
 		}
 		if(bot_total>21) {
-			Main.coins+=((Casino.bet_amnt)*2);
-			popup.setVisible(true);
+			pop_up("Dealer Busted! You've gained $"+Casino.bet_amnt,true,2);
 		}
 	}
 	
@@ -126,10 +131,10 @@ public class Blackjack{
 		if(pp_end==true && bot_end==true) {
 			
 			if(total_amnt>bot_total) {
-				Main.coins+=((Casino.bet_amnt)*2);
+				pop_up("You've gained $"+Casino.bet_amnt,true, 2);
 			}
 			if(total_amnt==bot_total) {
-				Main.coins+=Casino.bet_amnt;
+				pop_up("You have tied with the dealer, Nothing gained.",true,1);
 			}
 			BlackJack.setVisible(false);
 		}
@@ -190,6 +195,7 @@ public class Blackjack{
 		event = new JTextArea();
 		event.setText("event_here");
 		event.setWrapStyleWord(true);
+		event.setVisible(false);
 		event.setColumns(8);
 		event.setRows(33);
 		event.setLineWrap(true);
