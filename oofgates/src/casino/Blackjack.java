@@ -13,6 +13,9 @@ import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -33,7 +36,7 @@ public class Blackjack{
 	private JPanel panel, panel_1;
 	private JLabel hit_lb, totalNum_lb, CrntNum_lb, AllNum_lb, botCur_lb, lblTotalAmount,
 		who_lb, who2_lb, lblNewLabel, dhit_lb, dtotal_lb, ace_lb;
-	private boolean bot_end, pp_end; 
+	private boolean bot_end, pp_end, vis; 
 	private JFrame BlackJack;
 	
 	Luck l = new Luck();
@@ -64,6 +67,7 @@ public class Blackjack{
 	
 	public void pop_up(String s, boolean b, int i) {
 		event.setText(s);
+		vis=b;
 		event.setVisible(b);
 		
 		Main.coins+=(Casino.bet_amnt*i);
@@ -176,6 +180,8 @@ public class Blackjack{
 		}
 	}
 	
+	
+	
 	/**
 	 * @wbp.parser.entryPoint
 	 */
@@ -189,8 +195,35 @@ public class Blackjack{
 		BlackJack.setVisible(true);
 		BlackJack.setSize(new Dimension(800, 450));
 		
+		MouseListener click = new MouseListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				if(vis==true) {
+					BlackJack.setVisible(false);
+					Main.f.setVisible(true);
+				}
+			}
+
+			public void mousePressed(MouseEvent e) {
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			public void mouseExited(MouseEvent e) {
+				
+			}
+		};
+		
 		//set cards
 		val_cards();
+		BlackJack.addMouseListener(click);
 		
 		event = new JTextArea();
 		event.setText("event_here");
